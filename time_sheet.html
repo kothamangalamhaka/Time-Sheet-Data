@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haka Time sheet 2026</title>
+    <style>
+        /* CSS ഇവിടെ തന്നെ ചേർക്കുന്നു */
+        body {
+            background-color: black;
+            color: white;
+            margin: 0;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 100px;
+            color: lime;
+            font-weight: bold;
+        }
+
+        .div {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .div > button {
+            background-color: blue;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .div > button:hover {
+            background-color: darkblue;
+        }
+
+        .div > button > a {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Loading Animation Styles */
+        #loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: none; /* തുടക്കത്തിൽ ഹൈഡ് ചെയ്യുന്നു */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader {
+            border: 8px solid #333;
+            border-top: 8px solid lime;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        .loading-text {
+            margin-top: 15px;
+            color: lime;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader-container">
+        <div class="loader"></div>
+        <div class="loading-text">LOADING...</div>
+    </div>
+
+    <h1>Individual Time Sheet By Plate No
+    </h1>
+
+    <div class="div">
+        <button onclick="showLoader()">
+            <a href="https://script.google.com/macros/s/AKfycbxz7EGU4pMpvFB24kEkkggtgHI9JW5NvstMXCUMkqTTDOwODI-6-2HFXk4aiPIL9mw/exec?page=time_sheet">January</a>
+        </button>
+        <button onclick="showLoader()">
+            <a href="https://script.google.com/macros/s/AKfycbxjTOk2uVRAlhLIQjZaWgciUUT62_VJvAjrFxwYdciR8-mkM9N4zC5F9h_IpJ4_Zomy9w/exec?page=time_sheet">February</a>
+        </button>
+    </div>
+
+    <script>
+        function showLoader() {
+            // ബട്ടൺ ക്ലിക്ക് ചെയ്യുമ്പോൾ ലോഡർ കാണിക്കുന്നു
+            document.getElementById('loader-container').style.display = 'flex';
+        }
+
+        // ഗൂഗിൾ ഷീറ്റ് ലിങ്ക് പുതിയ വിൻഡോയിൽ അല്ല തുറക്കുന്നതെങ്കിൽ 
+        // തിരികെ വരുമ്പോൾ ലോഡർ ഒഴിവാക്കാൻ ഈ ഭാഗം സഹായിക്കും
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) {
+                document.getElementById('loader-container').style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
